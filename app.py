@@ -13,13 +13,12 @@ logging.warning(joblib.__version__)
 # load model from pickle file
 current_path = os.getcwd()
 # simulador_model = os.path.join(current_path, "RF_compressed.joblib")
-simulador_model = "RF_compressed.joblib"
-logging.warning(simulador_model)
 # model = joblib.load(simulador_model)
 # with gzip.open("compressed_data.pkl.gz", "rb") as file:
 #     model = pickle.load(file)
 
-model = lzma.open("compressed_data.pkl.gz")
+with gzip.open("compressed_data.pkl.gz", "rb") as file:
+    model = pickle.load(file)
 
 st.write(
     """
