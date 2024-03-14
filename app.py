@@ -6,6 +6,7 @@ import logging
 import os
 import pickle
 import gzip
+import lzma
 
 logging.warning(joblib.__version__)
 
@@ -15,8 +16,10 @@ current_path = os.getcwd()
 simulador_model = "RF_compressed.joblib"
 logging.warning(simulador_model)
 # model = joblib.load(simulador_model)
-with gzip.open("compressed_data.pkl.gz", "rb") as file:
-    model = pickle.load(file)
+# with gzip.open("compressed_data.pkl.gz", "rb") as file:
+#     model = pickle.load(file)
+
+model = lzma.open("compressed_data.pkl.gz")
 
 st.write(
     """
